@@ -12,7 +12,7 @@ Automatically publish drafts every 5 minutes silently in the background.
 
 == Description ==
 
-Auto Publish Drafts is a plugin that will automatically publish drafts every 5 minutes. It will be supported and maintained until at least 2022, or as long as is necessary.
+Auto Publish Drafts is a plugin that will automatically publish drafts every 5 minutes in WordPress. It will be supported and maintained until at least 2022, or as long as is necessary.
 
 Once activated, it will work silently in the background. There is no other configuration, the auto publish drafts settings screens are enabled or disabled by either enabling or disabling this plugin. I recommend you deactivate this plugin when there are no drafts left.
 
