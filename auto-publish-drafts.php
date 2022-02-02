@@ -3,10 +3,10 @@
 Plugin Name: Auto Publish Drafts
 Plugin URI:  https://wordpress.org/plugins/auto-publish-drafts/
 Description: Auto Publish Drafts is a plugin that will automatically publish drafts every 5 minutes.
-Version:     1.0
-Author:      Wong Siong Kiat
-Author URI:  https://github.com/wongsiongkiat/auto-publish-drafts/
-License:     GPLv2 or later
+Version: 1.1
+Author: Wong Siong Kiat
+Author URI: https://github.com/wongsiongkiat/auto-publish-drafts/
+License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 Text Domain: auto-publish-drafts
 Requires at least: 4.9
