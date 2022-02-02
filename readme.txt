@@ -1,5 +1,5 @@
 === Auto Publish Drafts ===
-Contributors: Wong Siong Kiat
+Contributors: wongsiongkiat
 Tags: drafts, posts, publish, auto publish, auto publish drafts, auto publish posts
 Requires at least: 4.9
 Tested up to: 5.9
