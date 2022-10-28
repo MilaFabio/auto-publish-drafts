@@ -27,10 +27,12 @@ if(!defined('ABSPATH'))
 register_activation_hook(__FILE__, 'activate_auto_publish_drafts');
 register_deactivation_hook(__FILE__, 'deactivate_auto_publish_drafts');
 
+$my_time = 100 ; //количество секунд
+
 // Plugins activated.
 function activate_auto_publish_drafts() {
     if(!wp_get_schedule('auto_publish_drafts'))
-        wp_schedule_event(time() + 300, 'publish_draft_every_5_minutes', 'auto_publish_drafts');
+        wp_schedule_event(time() + $my_time, 'publish_draft_every_5_minutes', 'auto_publish_drafts');
 }
 
 // Plugins deactivated.
@@ -40,9 +42,10 @@ function deactivate_auto_publish_drafts() {
 
 // Custom cron schedule to auto publish drafts every 5 minutes.
 function custom_publish_draft_cron_schedule($schedules) {
+	global $my_time;
 	$schedules['publish_draft_every_5_minutes'] = array(
-		'interval' => 300,
-		'display'  => __('Auto Publish Draft Every 5 Minutes'),
+		'interval' => $my_time,
+		'display'  => __('Auto Publish Draft Every custom second'),
 	);
 
 	return $schedules;
@@ -51,19 +54,24 @@ add_filter('cron_schedules', 'custom_publish_draft_cron_schedule');
 
 // Auto publish drafts every 5 minutes.
 function auto_publish_draft() {
+	//$postdate = '2022-10-28 16:47:00';
+	$postdate = current_datetime()->format('Y-m-d H:i:s');
+	
+	
 	$args = array(
 		'fields' => 'ids',
-		'post_type' => 'post',
+		'post_type' => 'komp',
 		'post_status' => 'draft',
 		'posts_per_page' => 1,
 		'orderby' => 'date',
-		'order' => 'ASC'
+		'order' => 'ASC',
+		'post_date' => $postdate
 	);
 	$draft_posts = new WP_Query($args);
 
 	if($draft_posts->have_posts()) {
     	foreach($draft_posts->posts as $draft_post_id)
-            wp_update_post(array('ID' => $draft_post_id, 'post_status' => 'publish'));
+            wp_update_post(array('ID' => $draft_post_id, 'post_status' => 'publish', 'post_date' => $postdate));
 
 		wp_reset_postdata();
 	}
